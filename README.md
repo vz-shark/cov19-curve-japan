@@ -1,4 +1,11 @@
-# Tracking the Growth of COVID-19 Cases
+# Tracking the Growth of COVID-19 Cases in Japanese
+
+## Additional notes
+Original code from https://github.com/aatishb/covid
+
+
+
+## Original Readme
 
 **Note: We are currently experiencing some issues with a change in the data source. Please bear with me while I get this back up to date soon.**
 
