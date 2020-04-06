@@ -1,11 +1,9 @@
 #!/bin/bash
 # run daily to update covid stats
 
-jupyter nbconvert --to notebook --execute curvefit.ipynb
+jupyter nbconvert --to html --execute curvefit-global.ipynb  --output ./curvefit-global.html
+jupyter nbconvert --to html --execute curvefit-us.ipynb --output ./curvefit-us.html
 
-mv curvefit.ipynb curvefit.previous.ipynb
-mv curvefit.nbconvert.ipynb curvefit.ipynb
-
-git add *
-git commit -m 'automatic update'
-git push
+#git add *
+#git commit -m 'automatic update'
+#git push
