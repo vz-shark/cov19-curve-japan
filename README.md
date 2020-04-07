@@ -12,16 +12,16 @@ Original code from https://github.com/aatishb/covid
 
 ### Files desctiption
 
-* curvefit-japan.ipynb  
+* [curvefit-japan.ipynb](https://github.com/vz-shark/covid19-curve-japan/blob/master/curvefit-japan.ipynb)  
 In country : Japan  
-Data from  : https://covid-2019.live/ [Data Repository](https://github.com/swsoyee/2019-ncov-japan)   
+Data from  : [covid-2019.live](https://covid-2019.live)  [Repository](https://github.com/swsoyee/2019-ncov-japan)   
 
 
-* curvefit-global.ipynb  
+* [curvefit-global.ipynb](https://github.com/vz-shark/covid19-curve-japan/blob/master/curvefit-global.ipynb)  
 In country : Global  
 Data from  : Johns Hopkins [Data Repository](https://github.com/CSSEGISandData/COVID-19)   
 
-* curvefit-us.ipynb  
+* [curvefit-us.ipynb](https://github.com/vz-shark/covid19-curve-japan/blob/master/curvefit-us.ipynb)  
 In country : USA  
 Data from  : Johns Hopkins [Data Repository](https://github.com/CSSEGISandData/COVID-19) 
 
