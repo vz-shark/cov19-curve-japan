@@ -16,11 +16,11 @@ cachedir = './cache/'
 vslist = {
     'confirmed_global':{
         'url': 'https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv',
-        'updates': ['../curvefit-global.ipynb']
+        'updates': ['./curvefit-global.ipynb']
     },
     'confirmed_us':{
         'url': 'https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv',
-        'updates': ['../curvefit-us.ipynb']
+        'updates': ['./curvefit-us.ipynb']
     }
 }
 
@@ -74,7 +74,7 @@ def cli():
     for one in updateset:
         print(f'##### nvconvert : {one} ........')
         #cmdstr = f'jupyter nbconvert --to html --execute {one}  --template=nbextensions --output ./{os.path.splitext( os.path.basename(one))[0]}.html'
-        cmdstr = f'jupyter nbconvert --to notebook --execute {one} --output ./{os.path.basename(one)}'
+        cmdstr = f'jupyter nbconvert --to notebook --execute {one} --output ./{one}'
         ret = subprocess.run(cmdstr, shell=True, capture_output=True, check=True)
         print('\t',ret)
         if(ret.returncode != 0 ):
