@@ -74,7 +74,7 @@ def cli():
     for one in updateset:
         print(f'##### nvconvert : {one} ........')
         #cmdstr = f'jupyter nbconvert --to html --execute {one}  --template=nbextensions --output ./{os.path.splitext( os.path.basename(one))[0]}.html'
-        cmdstr = f'jupyter nbconvert --execute {one}  --template=nbextensions --output {one}'
+        cmdstr = f'jupyter nbconvert --to notebook --execute {one}'
         ret = subprocess.run(cmdstr, shell=True, capture_output=True, check=True)
         print('\t',ret)
         if(ret.returncode != 0 ):
