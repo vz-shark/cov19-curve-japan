@@ -94,7 +94,7 @@ def cli():
             cmsg = 'forced auto update'
         subprocess.run(f'git add --all', shell=True)
         subprocess.run(f'git commit -m "{cmsg}"', shell=True)
-        subprocess.run(f'git push"', shell=True)
+        subprocess.run(f'git push', shell=True)
 
     print('\n\nFinish!')
     return(0)   
