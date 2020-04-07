@@ -1,9 +1,29 @@
 # Tracking the Growth of COVID-19 Cases in Japan
 
 ## Additional notes
+
+### Purpose
+Approximate the transition of the number of infections in Japan by an exponential function / logistic function. For comparison, we will also do this in countries around the world and in US states.
+
+### Forked from
 Original code from https://github.com/aatishb/covid
 
 
+
+### Files desctiption
+
+* curvefit-japan.ipynb  
+In country : Japan  
+Data from  : https://covid-2019.live/ [Data Repository](https://github.com/swsoyee/2019-ncov-japan)   
+
+
+* curvefit-global.ipynb  
+In country : Global  
+Data from  : Johns Hopkins [Data Repository](https://github.com/CSSEGISandData/COVID-19)   
+
+* curvefit-us.ipynb  
+In country : USA  
+Data from  : Johns Hopkins [Data Repository](https://github.com/CSSEGISandData/COVID-19) 
 
 ## Original Readme
 
