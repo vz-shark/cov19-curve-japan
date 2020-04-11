@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import sys
+from pathlib import Path
 import argparse
 import subprocess
 import requests
@@ -24,7 +25,7 @@ vslist = {
     },
     'confirmed_japan':{
         'url': 'https://raw.githubusercontent.com/swsoyee/2019-ncov-japan/master/Data/byDate.csv',
-        'updates': ['./curvefit-japan.ipynb']
+        'updates': ['./curvefit-japan.ipynb', 'curvefit-animate-japan.ipynb' ]
     }
 }
 
@@ -76,9 +77,20 @@ def cli():
     print(f'\tnum of update = {len(updateset)}')
     updatecount = 0
     for one in updateset:
-        print(f'##### nvconvert : {one} ........')
+    #        
+        print(f'##### nvconvert to notebook: {one} ........')
         #cmdstr = f'jupyter nbconvert --to html --execute {one}  --template=nbextensions --output ./{os.path.splitext( os.path.basename(one))[0]}.html'
         cmdstr = f'jupyter nbconvert --to notebook --execute {one} --output ./{one}'
+        ret = subprocess.run(cmdstr, shell=True, capture_output=True, check=True)
+        print('\t',ret)
+        if(ret.returncode != 0 ):
+            cprint(f'\tError!!!', 'red')
+            errcount += 1
+            continue
+        updatecount += 1
+        #
+        print(f'##### nvconvert to html    : {one} ........')
+        cmdstr = f'jupyter nbconvert --to html {one} --output ./{Path(one).with_suffix(".html")}'
         ret = subprocess.run(cmdstr, shell=True, capture_output=True, check=True)
         print('\t',ret)
         if(ret.returncode != 0 ):
