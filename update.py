@@ -25,7 +25,7 @@ vslist = {
     },
     'confirmed_japan':{
         'url': 'https://raw.githubusercontent.com/swsoyee/2019-ncov-japan/master/Data/byDate.csv',
-        'updates': ['./curvefit-japan.ipynb', 'curvefit-animate-japan.ipynb' ]
+        'updates': ['./curvefit-japan.ipynb', './curvefit-animate-japan.ipynb' ]
     }
 }
 
