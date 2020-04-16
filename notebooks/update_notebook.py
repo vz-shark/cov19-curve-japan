@@ -3,7 +3,7 @@ import os
 import sys
 from pathlib import Path
 import argparse
-import subprocess
+
 import requests
 import hashlib
 from termcolor import colored, cprint
@@ -53,7 +53,7 @@ def cli():
             print('\tset update target : ', one)
             updateset.add(one)
     
-    print('\n=========== Update Notebook ===========')
+    print('\n=========== Update HTML ==========')
     print(f'\tnum of update = {len(updateset)}')
     updatecount = 0
     updatefiles = ""
@@ -68,7 +68,7 @@ def cli():
             errcount += 1
             continue
         updatecount += 1
-        updatefiles += f" {one}"
+        updatefiles += f" one"
         #
         htmlfname = Path(one).with_suffix(".html")
         print(f'##### nvconvert to html    : {one} ........')
@@ -92,9 +92,9 @@ def cli():
         if(args.forced):
             cmsg = 'forced auto update'
         if(args.git in git_action[1:]):
-            subprocess.run(f'git add {updatefiles}', shell=True)
+            subprocess.run(f'git add {updatefiles}'.split())
         if(args.git in git_action[2:]):
-            subprocess.run(f'git commit -m "{cmsg}"', shell=True)
+            subprocess.run(f'git commit -m "{cmsg}"'.split())
         if(args.git in git_action[3:]):
             subprocess.run(f'git push'.split())
 
@@ -103,5 +103,5 @@ def cli():
 
         
 if __name__ == '__main__':
-    #sys.argv += ["--forced"]
+    sys.argv += ["--forced"]
     cli()

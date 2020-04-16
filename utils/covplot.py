@@ -91,12 +91,12 @@ class CovPlot_Curve(object):
             a_data = []
             # observed 
             a_data += [dict( x=one['data_X'],  y=one['data_Y'],    type="scatter",  name="Total",  mode="markers" )]
-            a_data += [dict( x=one['data_X'],  y=one['data_Inc'],  type="bar",      name="Increase")]
-            #a_data += [dict( x=np.arange(at),  y=one['data_Inc'],  type="bar",      name="Increase")]
+            a_data += [dict( x=one['data_X'],  y=one['data_Inc'],  type="bar",      name="Increase", yaxis="y2",
+                        marker_color="rgba(255,0,0,0.3)")]
             # fitted curve
             for kind in one['curve'].get_fitkind():
                 if( len(calcd[kind]) != 0):
-                    a_data += [dict( x=date14_range, y=calcd[kind], type="scatter", name=kind, mode="lines", line={"dash": "dot"} )]
+                    a_data += [dict( x=date14_range, y=calcd[kind], type="scatter", name=kind, mode="lines", line={"dash": "dot"})]
             
             data_series.append(a_data)
 
@@ -203,10 +203,23 @@ class CovPlot_Curve(object):
         fig = go.Figure(fig_dict)
         fig.update_layout(hovermode='x unified')
         fig.update_layout(width=950, height=700, autosize=False)
-        fig.update_layout(title=self.title, xaxis_title='Date', yaxis_title='Cases')
+        fig.update_layout(title=self.title, xaxis_title='Date')
+        #fig.update_layout(title=self.title, xaxis_title='Date', yaxis_title='Cases')
         #fig.update_layout(autosize=False)
         #fig.update_yaxes(autorange=[0,100])
         #fig.update_yaxes(range=[0,100])
+        
+        fig.update_layout(go.Layout( yaxis =dict(title="Total",    side="left",  showgrid=True)))
+        y2max = max(self.datafits[-1]["data_Inc"])
+        fig.update_layout(go.Layout( yaxis2=dict(title="Increase", side="right", range=[0, y2max*3], showgrid=False, overlaying="y")))
+        fig.update_layout(go.Layout( legend=dict(orientation="h", yanchor="top", x=0, y=1.1)))
+        
+
+        # layout = go.Layout(xaxis = dict(title = 'date', type='date', dtick = 'M1'),  # dtick: 1か月ごとは'M1' 
+        #       yaxis = dict(title = 'value(x)', side = 'left', showgrid=, # ２軸だと見誤る場合があるので目盛り線は表示させない(showgrid=False)
+        #                    range = [0, max(X)]),                             # rangeで指定したほうがよい。ゼロが合わない場合などがある。
+        #       yaxis2 = dict(title = 'value(y)', side = 'right', overlaying = 'y', range = [0, max(Y)], showgrid=False))
+
 
         #できた
         self.fig = fig
