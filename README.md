@@ -2,6 +2,9 @@
 
 ## Additional notes
 
+COVID-19 Situation in Japan  
+[http://miraikanai.net:8050/](http://miraikanai.net:8050/)
+
 ### Purpose
 Approximate the transition of the number of infections in Japan by an exponential function / logistic function. For comparison, we will also do this in countries around the world and in US states.
 
