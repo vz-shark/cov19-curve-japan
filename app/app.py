@@ -46,6 +46,7 @@ def cli():
     parser.add_argument('--host', type=str, default="127.0.0.1",  help='Specifiy web server bind address')
     parser.add_argument('--port', type=int, default=8050,         help='Specifiy web server bind port')
     parser.add_argument('--topnum', type=int, default=10,         help='Specifiy number of region')
+    parser.add_argument('--region', type=str, nargs="+",  help='add regions. (i.e.  --region 茨城 千葉 )')
     parser.add_argument('--cache_dir', type=str, default="../cache/",  help='Specifiy cache directory')
     parser.add_argument('--forced',  action='store_true',  help='forced not using cache.')
     parser.add_argument('--only_update_cache', action='store_true', default=False, help='Only update cache.')
@@ -78,9 +79,9 @@ def cli():
             #cases = cases[cases[mostrecentdate] >= 100]
             sorted_region = cases.index.values.tolist()
             regions = sorted_region[0:args.topnum]
-            # for one in ["茨城"]:
-            #     if( not one in regions):
-            #         regions.append(one)
+            for one in args.region:
+                if( not one in regions):
+                    regions.append(one)
             print(f"regions: {regions}")
 
             for one in regions:
@@ -91,6 +92,7 @@ def cli():
     
     if(args.only_update_cache):
         print("Finish !. only update cache.")
+        return True
         
 
     # htmlコンポーネットを用意
