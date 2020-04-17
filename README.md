@@ -1,6 +1,6 @@
 # Tracking the Growth of COVID-19 Cases in Japan
 
-## Additional notes
+## WebApp's URL    
 
 COVID-19 Situation in Japan  
 [http://miraikanai.net:8050/](http://miraikanai.net:8050/)
