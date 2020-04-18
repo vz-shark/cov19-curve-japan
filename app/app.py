@@ -8,6 +8,7 @@ import pandas as pd
 import base64
 import argparse
 from datetime import datetime, date, timedelta
+from termcolor import cprint, colored
 
 import dash
 import dash_core_components as dcc
@@ -136,14 +137,24 @@ def cli():
     app.run_server(debug=args.debug, host=args.host, port=args.port )
 
 
-def debug_args_set():
+def debug_args():
+    print("### Raw Arguments ###\n", sys.argv)
+    if( not('--debug_args_set' in sys.argv)):
+        return
+    sys.argv.remove('--debug_args_set')
+
+    cprint('############################', "red")
+    cprint('###  set debug args !    ###', "red")
+    cprint('############################', "red")
+
     sys.argv += ['--topnum', '1']
     sys.argv += ['--forced']
     sys.argv += ['--host', '0.0.0.0']
     # sys.argv += ['--dont_show_fig']    
     #sys.argv += ['--only_update_cache']
-    sys.argv += ['--dont_show_fig']
+    
+    print(sys.argv)
 
 if __name__ == '__main__':
-   # debug_args_set()
+    debug_args()
     cli()
