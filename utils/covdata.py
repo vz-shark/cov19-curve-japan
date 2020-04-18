@@ -31,7 +31,7 @@ class CovDataBase(metaclass=ABCMeta):
 
 class CovDataJP(CovDataBase):
     def __init__(self
-                 ,urls = {'byDate': 'https://raw.githubusercontent.com/swsoyee/2019-ncov-japan/master/Data/byDate.csv'}
+                 ,urls = {'byDate': 'https://raw.githubusercontent.com/swsoyee/2019-ncov-japan/master/50_Data/byDate.csv'}
                  ,verbose=0
                   ):
         
