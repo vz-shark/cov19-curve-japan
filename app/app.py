@@ -17,6 +17,9 @@ sys.path.append('../utils/')
 import covdata
 from covplot import CovPlot_Curve
 
+
+
+
 def makefig(df, regionstr, startlim = 10):
     print(f"## makefig() #{regionstr} ")
     obs_df = df[ df['Country/Region'] == f'{regionstr}']
@@ -46,7 +49,7 @@ def cli():
     parser.add_argument('--host', type=str, default="127.0.0.1",  help='Specifiy web server bind address')
     parser.add_argument('--port', type=int, default=8050,         help='Specifiy web server bind port')
     parser.add_argument('--topnum', type=int, default=10,         help='Specifiy number of region')
-    parser.add_argument('--region', type=str, nargs="+",  help='add regions. (i.e.  --region 茨城 千葉 )')
+    parser.add_argument('--region', type=str, default=[], nargs="+",  help='add regions. (i.e.  --region 茨城 千葉 )')
     parser.add_argument('--cache_dir', type=str, default="../cache/",  help='Specifiy cache directory')
     parser.add_argument('--forced',  action='store_true',  help='forced not using cache.')
     parser.add_argument('--only_update_cache', action='store_true', default=False, help='Only update cache.')
@@ -99,9 +102,9 @@ def cli():
     print("######## make html components ########")
     with open('./contents/description_approximation.md', 'r') as fd:
         markdown_section_approximation =  fd.read()
-
+    
     external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
+    
     app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
     with open("./contents/shark.png", "rb") as fd:
@@ -136,9 +139,11 @@ def cli():
 def debug_args_set():
     sys.argv += ['--topnum', '1']
     sys.argv += ['--forced']
+    sys.argv += ['--host', '0.0.0.0']
+    # sys.argv += ['--dont_show_fig']    
     #sys.argv += ['--only_update_cache']
-    #sys.argv += ['--dont_show_fig']
+    sys.argv += ['--dont_show_fig']
 
 if __name__ == '__main__':
-    #debug_args_set()
+   # debug_args_set()
     cli()
