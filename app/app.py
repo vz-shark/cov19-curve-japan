@@ -34,7 +34,8 @@ def makefig(df, regionstr, startlim = 10):
 
     print("#CovPlot", end='')
     print("- create", end='')
-    plot = CovPlot_Curve( data_x[0:-1], data_y[0:-1], title=f'Comfirmed Cases In {regionstr}')
+    # plot = CovPlot_Curve( data_x[0:-1], data_y[0:-1], title=f'Comfirmed Cases In {regionstr}')
+    plot = CovPlot_Curve( data_x, data_y, title=f'Comfirmed Cases In {regionstr}')
     print("- make_data", end='')
     plot.make_data()
     print("- make_fit", end='')
